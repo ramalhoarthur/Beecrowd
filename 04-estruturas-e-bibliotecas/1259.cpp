@@ -25,3 +25,6 @@ int main () {
               cout << pares[i] << "\n";
        }
 }
+
+//Pares e Ímpares
+//https://judge.beecrowd.com/pt/problems/view/1259

@@ -13,3 +13,6 @@ int main () {
        cout << "X = " << x << "\n";
        return 0;
 }
+
+//Extremamente Básico
+//https://judge.beecrowd.com/pt/problems/view/1001

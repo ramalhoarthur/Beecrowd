@@ -24,3 +24,6 @@ int main () {
        }
        return 0;
 }
+
+//Múltiplos
+//https://judge.beecrowd.com/pt/problems/view/1044
