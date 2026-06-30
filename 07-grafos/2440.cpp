@@ -1,57 +1,67 @@
+//Famílias de Troia
+//https://judge.beecrowd.com/pt/problems/view/2440
+
 #include <bits/stdc++.h>
 using namespace std; 
 
 typedef long long ll;
 typedef vector<int> vi;
 
-int bfs_componentes (vector<vi> &grafo, int n) {
-       vector<bool> visitados;
-       visitados.assign(n+1, false);
-       queue<int> fila;
-       int qntd_componentes = 0;
+int bfs_components (vector<vi> &graph, int n) {
+       
+       vector<bool> visited;
+       visited.assign(n+1, false);
+       queue<int> q;
+       int components = 0;
 
        for(int i=1 ; i<n+1 ; i++) {
-              if(!visitados[i]) {
-                     visitados[i] = true;
-                     qntd_componentes++;
-                     fila.push(i);
-                     while(!fila.empty()) {
-                            int atual = fila.front();
-                            fila.pop();
-                            for(int vizinho : grafo[atual]) {
-                                   if(!visitados[vizinho]) {
-                                          visitados[vizinho] = true;
-                                          fila.push(vizinho);
+
+              if(!visited[i]) {
+                     visited[i] = true;
+                     components++;
+                     q.push(i);
+              
+                     while(!q.empty()) {
+                            int visiting = q.front();
+                            q.pop();
+              
+                            for(int vertex : graph[visiting]) {
+                                   
+                                   if(!visited[vertex]) {
+                                          visited[vertex] = true;
+                                          q.push(vertex);
                                    }
+
                             }
                      }
               }
+
        }
-       return qntd_componentes;
+       return components;
 }
 
+
 int main () {
+
        ios::sync_with_stdio(false);
        cin.tie(nullptr);
 
-       int n, m, qntd_componentes;
-       vector<vi> grafo;
+       int n, m, components;
+       vector<vi> graph;
 
        cin >> n >> m;
-       grafo.resize(n+1);
+       graph.resize(n+1);
 
        for(int i = 0 ; i < m ; i++) {
               int u, v;
               cin >> u >> v;
 
-              grafo[u].push_back(v);
-              grafo[v].push_back(u);
+              graph[u].push_back(v);
+              graph[v].push_back(u);
        }
 
-       qntd_componentes = bfs_componentes(grafo, n);
-       cout << qntd_componentes << "\n";
+       components = bfs_components(graph, n);
+       cout << components << "\n";
+
        return 0;
 }
-
-//Famílias de Troia
-//https://judge.beecrowd.com/pt/problems/view/2440

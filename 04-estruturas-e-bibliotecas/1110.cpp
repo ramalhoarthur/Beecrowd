@@ -1,3 +1,6 @@
+//Jogando Cartas Fora
+//https://judge.beecrowd.com/pt/problems/view/1110
+
 #include <bits/stdc++.h>
 using namespace std; 
 
@@ -5,6 +8,7 @@ typedef long long ll;
 typedef vector<int> vi;
 
 int main () {
+
        ios::sync_with_stdio(false);
        cin.tie(nullptr);
 
@@ -12,29 +16,27 @@ int main () {
 
        while(cin >> n && n != 0) {
               
-              queue<int> cartas;
+              queue<int> cards;
               
               for(int i=1 ; i < n+1 ; i++) {
-                     cartas.push(i);
+                     cards.push(i);
               }
 
               cout << "Discarded cards: ";
-              while(cartas.size() > 2) {
-                     cout << cartas.front() << ", ";
-                     cartas.pop();
-                     cartas.push(cartas.front());
-                     cartas.pop();
+              while(cards.size() > 2) {
+                     cout << cards.front() << ", ";
+                     cards.pop();
+                     cards.push(cards.front());
+                     cards.pop();
               }
-              cout << cartas.front() << "\n";
-              cartas.pop();
-              cartas.push(cartas.front());
-              cartas.pop();
-              cout << "Remaining card: " << cartas.front() << "\n";
+              
+              cout << cards.front() << "\n";
+              cards.pop();
+              cards.push(cards.front());
+              cards.pop();
+              cout << "Remaining card: " << cards.front() << "\n";
        
        }
 
        return 0;
 }
-
-//Jogando Cartas Fora
-//https://judge.beecrowd.com/pt/problems/view/1110
